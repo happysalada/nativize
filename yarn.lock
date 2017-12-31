@@ -918,6 +918,10 @@ chokidar@^1.6:
   optionalDependencies:
     fsevents "^1.0.0"
 
+chomp@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/chomp/-/chomp-0.0.1.tgz#16a4f8cc302e1fdf284c23e45281aa7816fb2749"
+
 cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/cipher-base/-/cipher-base-1.0.4.tgz#8760e4ecc272f4c363532f926d874aae2c1397de"
@@ -956,6 +960,10 @@ code-point-at@^1.0.0:
 coffee-script@~1.12.7:
   version "1.12.7"
   resolved "https://registry.yarnpkg.com/coffee-script/-/coffee-script-1.12.7.tgz#c05dae0cb79591d05b3070a8433a98c9a89ccc53"
+
+colors@0.5.x:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/colors/-/colors-0.5.1.tgz#7d0023eaeb154e8ee9fce75dcb923d0ed1667774"
 
 combined-stream@^1.0.5, combined-stream@~1.0.5:
   version "1.0.5"
@@ -1490,6 +1498,13 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
+git-digest-brunch@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/git-digest-brunch/-/git-digest-brunch-1.0.3.tgz#f9c7f6bc56f548411ddb009a55f48da084b89b9b"
+  dependencies:
+    chomp "0.0.1"
+    replace "~0.2.9"
+
 glob-base@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/glob-base/-/glob-base-0.3.0.tgz#dbb164f6221b1c0b1ccf82aea328b497df0ea3c4"
@@ -1940,6 +1955,10 @@ loose-envify@^1.0.0:
   dependencies:
     js-tokens "^3.0.0"
 
+lru-cache@2:
+  version "2.7.3"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-2.7.3.tgz#6d4524e8b955f95d4f5b58851ce21dd72fb4e952"
+
 md5.js@^1.3.4:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/md5.js/-/md5.js-1.3.4.tgz#e9bdbde94a20a5ac18b04340fc5764d5b09d901d"
@@ -2019,6 +2038,13 @@ minimalistic-crypto-utils@^1.0.0, minimalistic-crypto-utils@^1.0.1:
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
   dependencies:
     brace-expansion "^1.1.7"
+
+minimatch@~0.2.9:
+  version "0.2.14"
+  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-0.2.14.tgz#c74e780574f63c6f9a090e90efbe6ef53a6a756a"
+  dependencies:
+    lru-cache "2"
+    sigmund "~1.0.0"
 
 minimist@0.0.8:
   version "0.0.8"
@@ -2108,6 +2134,13 @@ node-pre-gyp@^0.6.39:
     semver "^5.3.0"
     tar "^2.2.1"
     tar-pack "^3.4.0"
+
+nomnom@1.6.x:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/nomnom/-/nomnom-1.6.2.tgz#84a66a260174408fc5b77a18f888eccc44fb6971"
+  dependencies:
+    colors "0.5.x"
+    underscore "~1.4.4"
 
 nopt@^4.0.1:
   version "4.0.1"
@@ -2458,6 +2491,14 @@ repeating@^2.0.0:
   dependencies:
     is-finite "^1.0.0"
 
+replace@~0.2.9:
+  version "0.2.10"
+  resolved "https://registry.yarnpkg.com/replace/-/replace-0.2.10.tgz#1123397e995b3bfef9985fc63cddcf79a014fd64"
+  dependencies:
+    colors "0.5.x"
+    minimatch "~0.2.9"
+    nomnom "1.6.x"
+
 request@2.81.0:
   version "2.81.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.81.0.tgz#c6928946a0e06c5f8d6f8a9333469ffda46298a0"
@@ -2580,6 +2621,10 @@ sha.js@^2.4.0, sha.js@^2.4.8:
   dependencies:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
+
+sigmund@~1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/sigmund/-/sigmund-1.0.1.tgz#3ff21f198cad2175f9f3b781853fd94d0d19b590"
 
 signal-exit@^3.0.0:
   version "3.0.2"
@@ -2797,6 +2842,10 @@ uid-number@^0.0.6:
 ultron@1.0.x:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/ultron/-/ultron-1.0.2.tgz#ace116ab557cd197386a4e88f4685378c8b2e4fa"
+
+underscore@~1.4.4:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.4.4.tgz#61a6a32010622afa07963bf325203cf12239d604"
 
 universal-path@^0.1:
   version "0.1.0"
