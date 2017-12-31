@@ -10,5 +10,13 @@ exports.files = {
 };
 
 exports.plugins = {
-  babel: {presets: ['latest']}
+  babel: {presets: ['latest']},
+  gzip: {
+    paths: {
+      javascript: '/',
+      stylesheet: '/'
+    },
+    removeOriginalFiles: false,
+    renameGzipFilesToOriginalFiles: false
+  }
 };

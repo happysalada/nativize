@@ -19,6 +19,7 @@
     "babel-preset-latest": "^6",
     "brunch": "^2",
     "clean-css-brunch": "^2",
+    "gzip-brunch": "^1.3.0",
     "uglify-js-brunch": "^2"
   }
 }
