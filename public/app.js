@@ -151,8 +151,37 @@ require.register("initialize.js", function(exports, require, module) {
 'use strict';
 
 document.addEventListener('DOMContentLoaded', function () {
-  // do your setup here
-  console.log('Initialized app');
+  var submitTimeoutID = void 0;
+  var inputSource = document.querySelectorAll('#input-source')[0];
+  var nativizedResponse = document.querySelectorAll('#nativized-response')[0];
+  var submit = function submit() {
+    fetch('https://2d9c64d4-820e-46d9-b762-230889fdd5b1.mock.pstmn.io/nativize', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ "text": inputSource.value })
+    }).then(function (response) {
+      if (response.status > 299) throw new Error('there was a problem with the request');
+      nativizedResponse.innerHTML = response.json();
+    }).catch(function (error) {
+      nativizedResponse.innerHTML = error.message;
+    });
+  };
+  inputSource.addEventListener('input', function () {
+    if (submitTimeoutID) window.clearTimeout(submitTimeoutID);
+    submitTimeoutID = window.setTimeout(submit, 1000);
+  });
+  inputSource.addEventListener('keydown', function (_ref) {
+    var keyCode = _ref.keyCode;
+    return keyCode == 13 && event.preventDefault();
+  });
+  inputSource.addEventListener('keyup', function (_ref2) {
+    var keyCode = _ref2.keyCode;
+    return keyCode == 13 && submit();
+  });
 });
 });
 
