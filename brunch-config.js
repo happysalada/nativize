@@ -10,7 +10,13 @@ exports.files = {
 };
 
 exports.plugins = {
-  babel: {presets: ['latest']},
+  babel: {
+    presets: [['env', {
+      targets: {
+        browsers: ['last 2 versions', 'safari >= 7']
+      }
+    }]]
+  },
   gzip: {
     paths: {
       javascript: '/',
