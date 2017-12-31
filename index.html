@@ -28,10 +28,13 @@
 <div class="splash-container">
   <div class="splash">
     <div class="input-wrapper">
-<textarea id="input-source" class="input-textarea" placeholder="convert english into native english.&#10;Touch to type"></textarea>
+      <textarea id="input-source" class="input-textarea" placeholder="convert english into native english.&#10;Touch to type"></textarea>
     </div>
     <div class="button-wrapper">
       <a href="" class="pure-button pure-button-primary nativize-button">Nativize</a>
+    </div>
+    <div class="nativized-wrapper">
+      <p id="nativized-response"></p>
     </div>
   </div>
 </div>
@@ -145,6 +148,37 @@
   </div>
 
 </div>
-
+<script type="text/javascript">
+  var submitTimeoutID;
+  var inputSource = document.querySelectorAll('#input-source')[0];
+  var nativizedResponse = document.querySelectorAll('#nativized-response')[0];
+  console.log("input source", inputSource);
+  inputSource.addEventListener('input', function() {
+    if (submitTimeoutID) window.clearTimeout(submitTimeoutID);
+    submitTimeoutID = window.setTimeout(submit, 1000);
+  })
+  inputSource.addEventListener('keydown', function(event) {
+    event.keyCode == 13 && event.preventDefault();
+  })
+  inputSource.addEventListener('keyup', function (event) {
+    event.keyCode == 13 && submit();
+  })
+  function submit() {
+    fetch('https://2d9c64d4-820e-46d9-b762-230889fdd5b1.mock.pstmn.io/nativize', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({"text": inputSource.value})
+    }).then(function(response) {
+      if (response.status > 299) throw new Error('there was a problem with the request')
+      nativizedResponse.innerHTML = response.json()
+    }).catch(function(error) {
+      nativizedResponse.innerHTML = error.message
+    })
+  }
+</script>
 </body>
 </html>
