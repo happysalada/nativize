@@ -9,6 +9,10 @@ exports.files = {
   stylesheets: {joinTo: 'app.css'}
 };
 
+exports.paths = {
+  public: 'docs'
+}
+
 exports.plugins = {
   babel: {presets: ['latest']}
 };
