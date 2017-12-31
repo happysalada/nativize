@@ -154,11 +154,15 @@ require.register("initialize.js", function(exports, require, module) {
 
 var _jsedn = require('jsedn');
 
+var edn = _interopRequireWildcard(_jsedn);
+
 var _axios = require('axios');
 
 var _axios2 = _interopRequireDefault(_axios);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 document.addEventListener('DOMContentLoaded', function () {
   var submitTimeoutID = void 0;
@@ -167,14 +171,15 @@ document.addEventListener('DOMContentLoaded', function () {
   var submit = function submit() {
     (0, _axios2.default)({
       method: 'post',
-      url: '/',
-      data: (0, _jsedn.encode)({ "text": inputSource.value })
+      url: 'https://spike-ring.work/',
+      headers: { 'Content-Type': 'application/edn' },
+      data: edn.encode(new edn.Map([edn.kw(":text"), '' + inputSource.value]))
     }).then(function (_ref) {
       var data = _ref.data,
           status = _ref.status;
 
       if (status > 299) throw new Error('there was a problem with the request');
-      nativizedResponse.innerHTML = (0, _jsedn.parse)(data);
+      nativizedResponse.innerHTML = edn.parse(data).at(edn.kw(":text"));
     }).catch(function (error) {
       nativizedResponse.innerHTML = error.message;
     });

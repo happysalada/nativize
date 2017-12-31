@@ -1,4 +1,4 @@
-import { parse, encode } from 'jsedn'
+import * as edn from 'jsedn'
 import axios from 'axios'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,11 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const submit = () => {
     axios({
       method: 'post',
-      url: '/',
-      data: encode({"text": inputSource.value })
+      url: 'https://spike-ring.work/',
+      headers: {'Content-Type': 'application/edn'},
+      data: edn.encode(new edn.Map([edn.kw(":text"), `${inputSource.value}`]))
     }).then(({ data, status }) => {
       if (status > 299) throw new Error('there was a problem with the request')
-      nativizedResponse.innerHTML = parse(data);
+      nativizedResponse.innerHTML = edn.parse(data).at(edn.kw(":text"));
     }).catch(error => {
       nativizedResponse.innerHTML = error.message
     })
