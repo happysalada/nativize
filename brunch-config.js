@@ -10,7 +10,7 @@ exports.files = {
 };
 
 exports.paths = {
-  public: 'docs'
+  public: ''
 }
 
 exports.plugins = {
