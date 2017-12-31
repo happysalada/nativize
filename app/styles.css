@@ -19,27 +19,17 @@ h1, h2, h3, h4, h5, h6, label {
   color: #34495e;
 }
 
-.pure-img-responsive {
-  max-width: 100%;
-  height: auto;
-}
-
 /*
  * -- LAYOUT STYLES --
  * These are some useful classes which I will need
  */
 
-.l-box {
-  padding: 1em;
-}
-
-.l-box-lrg {
-  padding: 2em;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
 .is-center {
   text-align: center;
+}
+
+.form-wrapper {
+  margin: 0 auto;
 }
 
 /*
@@ -51,6 +41,7 @@ h1, h2, h3, h4, h5, h6, label {
   margin: 1em 0 0;
   font-weight: bold;
   font-size: 100%;
+  text-align: left;
 }
 
 .pure-form input[type] {
@@ -59,6 +50,10 @@ h1, h2, h3, h4, h5, h6, label {
   font-size: 100%;
   width: 100%;
   margin-bottom: 1em;
+}
+
+.pure-form {
+  text-align: center;
 }
 
 /*
