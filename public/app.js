@@ -115,7 +115,9 @@
 })();
 
 (function() {
-var global = typeof window === 'undefined' ? this : window;
+var global = typeof window === 'undefined' ? this : window;require.register("fs", function(exports, require, module) {
+  module.exports = {};
+});
 var __makeRelativeRequire = function(require, mappings, pref) {
   var none = {};
   var tryReq = function(name, pref) {
@@ -150,22 +152,29 @@ var __makeRelativeRequire = function(require, mappings, pref) {
 require.register("initialize.js", function(exports, require, module) {
 'use strict';
 
+var _jsedn = require('jsedn');
+
+var _axios = require('axios');
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 document.addEventListener('DOMContentLoaded', function () {
   var submitTimeoutID = void 0;
   var inputSource = document.querySelectorAll('#input-source')[0];
   var nativizedResponse = document.querySelectorAll('#nativized-response')[0];
   var submit = function submit() {
-    fetch('https://2d9c64d4-820e-46d9-b762-230889fdd5b1.mock.pstmn.io/nativize', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ "text": inputSource.value })
-    }).then(function (response) {
-      if (response.status > 299) throw new Error('there was a problem with the request');
-      nativizedResponse.innerHTML = response.json();
+    (0, _axios2.default)({
+      method: 'post',
+      url: '/',
+      data: (0, _jsedn.encode)({ "text": inputSource.value })
+    }).then(function (_ref) {
+      var data = _ref.data,
+          status = _ref.status;
+
+      if (status > 299) throw new Error('there was a problem with the request');
+      nativizedResponse.innerHTML = (0, _jsedn.parse)(data);
     }).catch(function (error) {
       nativizedResponse.innerHTML = error.message;
     });
@@ -174,12 +183,12 @@ document.addEventListener('DOMContentLoaded', function () {
     if (submitTimeoutID) window.clearTimeout(submitTimeoutID);
     submitTimeoutID = window.setTimeout(submit, 1000);
   });
-  inputSource.addEventListener('keydown', function (_ref) {
-    var keyCode = _ref.keyCode;
+  inputSource.addEventListener('keydown', function (_ref2) {
+    var keyCode = _ref2.keyCode;
     return keyCode == 13 && event.preventDefault();
   });
-  inputSource.addEventListener('keyup', function (_ref2) {
-    var keyCode = _ref2.keyCode;
+  inputSource.addEventListener('keyup', function (_ref3) {
+    var keyCode = _ref3.keyCode;
     return keyCode == 13 && submit();
   });
 });
