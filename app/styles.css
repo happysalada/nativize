@@ -90,7 +90,6 @@ a.pure-button-primary {
   /* Fixed menus normally have a border at the bottom. */
   border-bottom: none;
   /* I need a higher z-index here because of the scroll-over effect. */
-  z-index: 4;
 }
 
 .home-menu .pure-menu-heading {
@@ -119,23 +118,17 @@ a.pure-button-primary {
  */
 
 .splash-container {
-  z-index: 1;
-  overflow: hidden;
   /* The following styles are required for the "scroll-over" effect */
+  margin-top: 100px;
   width: 100%;
-  height: 75%;
-  top: 0;
-  left: 0;
-  position: fixed !important;
+  min-height: 75%;
+  height: auto;
 }
 
 .splash {
   /* absolute center .splash within .splash-container */
-  position: absolute;
-  top: 100px;
-  left: 0;
   width: 100%;
-  height: 50%;
+  min-height: 50%;
 }
 
 .button-wrapper {
@@ -178,7 +171,9 @@ a.pure-button-primary {
   box-sizing: border-box;
   padding-bottom: 2px;
   direction: ltr;
-  height: 3em;
+  min-height: 3em;
+  height: auto;
+  overflow: auto;
   width: 100%;
 }
 
@@ -210,11 +205,8 @@ a.pure-button-primary {
 
 .content-wrapper {
   /* These styles are required for the "scroll-over" effect */
-  position: absolute;
-  top: 75%;
   width: 100%;
   min-height: 12%;
-  z-index: 2;
   background: white;
 }
 
