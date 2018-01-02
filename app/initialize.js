@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
       data: edn.encode(new edn.Map([edn.kw(":text"), `${inputSource.value}`]))
     }).then(({ data, status }) => {
       if (status > 299) throw new Error('there was a problem with the request')
-      nativizedResponse.innerHTML = edn.parse(data).at(edn.kw(":text"));
+      nativizedResponse.innerHTML = edn.parse(data).at(edn.kw(":text"))
+      nativizedResponse.style.visibility = 'visible'
     }).catch(error => {
       nativizedResponse.innerHTML = error.message
     });
@@ -26,6 +27,4 @@ document.addEventListener('DOMContentLoaded', () => {
     ({keyCode}) => keyCode == 13 && event.preventDefault())
   inputSource.addEventListener('keyup',
     ({keyCode}) => keyCode == 13 && submit())
-  nativizeButton.addEventListener('click',
-    event => event.preventDefault() && submit())
 });
